@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+  <div style="text-align: center">
+    <h1>Welcome To {{title}}</h1>
+    <hr>
+    <span>Found {{totalPeople}} People.</span>
+  </div>
+  <div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Delete</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Age</th>
+          <th>Icon</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let person of people; let i = index">
+          <ng-container *ngIf="filterType.indexOf(person.Gender) > -1">
+            <ng-container *ngIf="i < filterNumber">
+              <td (click)="deletePerson(person)"><button class="btn btn-danger">Delete</button></td>
+              <td>{{person.FirstName}}</td>
+              <td>{{person.LastName}}</td>
+              <td>{{person.Age}}</td>   
+              <td><img src="{{person.ImageUrl}}"></td>
+            </ng-container>
+          </ng-container>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <hr>
+  <div>
+    <button class="btn btn-primary" (click)="toggleOptions()">{{optionsTitle}}</button>
+  </div>
+  <br>
+  <div [hidden]="!showOptions">
+    <span>Filter:</span>
+    <br><br>
+    <button class="btn btn-info" (click)="filterByNumber(3)">Show 3 Records</button>
+    <button class="btn btn-info" (click)="filterByNumber(5)">Show 5 Records</button>
+    <button class="btn btn-info" (click)="filterByNumber(people.length)">Show All Records</button>
+    <br><br>
+    <button class="btn btn-info" (click)="filterByType(0)">Show Males</button>
+    <button class="btn btn-info" (click)="filterByType(1)">Show Females</button>
+    <button class="btn btn-info" (click)="filterByType(-1)">Show All Genders</button>
+  </div>
+</body>
+
+
+
+</html>
