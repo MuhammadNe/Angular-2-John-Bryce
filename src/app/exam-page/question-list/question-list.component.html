@@ -1,0 +1,12 @@
+<table class='table table-bordered'>
+  <tr>
+    <th>Questions</th>
+  </tr>
+  <tr *ngFor='let question of examArr' (click)='setSelectedMovie(question)' [ngClass]='{selected : question === selectedQuestion}'>
+    <td><i [ngClass]="(question.Answered === true) ? 'glyphicon glyphicon-ok-sign' : 'glyphicon glyphicon-question-sign'"></i> {{question.Question}}</td>
+  </tr>
+</table>
+<hr>
+<span>Questions Answered: {{questionsAnswered}}</span>
+<br>
+<span>Questions Remaining: {{questionsRemaining}}</span>

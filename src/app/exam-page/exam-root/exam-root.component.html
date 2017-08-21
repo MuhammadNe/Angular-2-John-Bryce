@@ -1,0 +1,15 @@
+
+<div class='container-fluid'>
+  <div class='row'>
+    <div class='col-md-9'>
+        <app-count-down></app-count-down>
+        <app-question-display></app-question-display>
+        <span>{{displaySelectedQuestion.Question}}</span>
+        <br>
+        <span>{{displaySelectedQuestion.Answer}}</span>
+    </div>
+    <div class='col-md-3'>
+        <app-question-list (emitSelectedQuestion)="emitSelectedQuestion($event)"></app-question-list>
+    </div>
+  </div>
+</div>
